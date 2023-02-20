@@ -1,0 +1,5 @@
+P=?[(("bot"&true)|(!("bot")&"step"))U((!("bot")&"live")& P>=1[X("bot"&true)])]
+
+P=?[(("bot"&true)|(!("bot")&"step"))U((!("bot")&"dead")& P>=1[X("bot"&true)])]
+
+P=?[(("bot"&true)|(!("bot")&"step"))U((!("bot")&("dead"|"live"))& P>=1[X("bot"&true)])]
