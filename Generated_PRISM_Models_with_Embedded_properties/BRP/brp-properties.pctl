@@ -1,0 +1,4 @@
+P=?[(("bot"&true)|(!("bot")&("c_aF"|"success_frame")))U((!("bot")&"c_success_file")& P>=1[X("bot"&true)])] 
+
+P=?[(("bot"&true)|(!("bot")&("c_aF"|"success_frame"|"fail_transmission")))U((!("bot")&"c_success_file")& P>=1[X("bot"&true)])] 
+
