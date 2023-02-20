@@ -1,0 +1,68 @@
+#########################################################################################################################################
+
+The Repository contains the following files:
+
+1. LTS-to-MRF-PRISM-generator.py :	
+
+A python code which takes in as input an ADTMC file generated from a mCRL2 code of an ADTMC via the sequence mCRL2LPS on the .mcrl2 file
+followed by the lps2lts on the generated lps in the previous stage with the output option chosen as .aut extension. The resultant file
+is input to this code. All the mCRL2 models are adapted from the given examples of probabilistic systems of the mCRL2 toolset.
+The subfolder mCRL2_Code_ADTMCs in this directory contains the mcrl2 code, generated lps and lts as mentioned before. The code file
+should be run as: (in case .aut generated via lts with .lts (Possible in mCRL2 GUI)
+
+					python3 LTS-to-MRF-PRISM-generator.py <file-name.aut>
+					python LTS-to-MRF-PRISM-generator.py <file-name.aut>
+					------------------OR---------------------------------
+					python3 LTS-to-MRF-PRISM-generator.py <file-name.lts> 
+					[These are aut files saved with .lts extensions. Code not comaptible for any other lts file.]
+					python LTS-to-MRF-PRISM-generator.py <file-name.lts>  
+					[These are aut files saved with .lts extensions. Code not comaptible for any other lts file.]
+          This will output three files:
+					(a) ats<file-name>.sta 
+          (b) ats<file-name>.tra 
+          (c) ats<file-name>.lab
+These files can be directly used to build the corresponding SDTMC in PRISM in the command line and model-checked for the formulas:
+prism -importtrans ats<file-name>.tra -importstates ats<file-name>.sta -importlabels ats<file-name>.lab -dtmc <property-file>.pctl
+The embedded formulas for each problem can be found in the subdirectory PRISM inside each problem subfolder.
+
+2. LTS-to-PRISM-CODE-generator.py :	
+
+A python code which takes in as input an ADTMC file generated from a mCRL2 code of an ADTMC via the sequence mCRL2LPS on the .mcrl2 file 
+followed by the lps2lts on the generated lps in the previous stage with the output option chosen as .aut extension. The resultant file is
+input to this code. All the mCRL2 models are adapted from the given examples of probabilistic systems of the mCRL2 toolset. The subfolder
+mCRL2 in this directory contains the mcrl2 code, generated lps and lts as mentioned before. You can manually edit the code to tweak it to
+print the state mappings in case you require them. The code file should be run as:
+
+					python3 LTS-to-PRISM-CODE-generator.py <file-name.lts>
+					python2 LTS-to-PRISM-CODE-generator.py <file-name.lts>
+					------------------OR---------------------------------
+					python3 LTS-to-MRF-PRISM-generator.py <file-name.lts> 
+					[These are aut files saved with .lts extensions. Code not comaptible for any other lts file.]
+					python LTS-to-MRF-PRISM-generator.py <file-name.lts>  
+					[These are aut files saved with .lts extensions. Code not comaptible for any other lts file.]
+					
+          This will output a single file: ats<file-name>.prism
+          
+This file can be opened in the PRISM GUI or through command line and built as follows:
+            prism ats<file-name>.prism <property-file>.pctl
+The embedded formulas for each problem can be found in the subdirectory Generated_PRISM_Models_with_Embedded_properties inside each problem
+subfolder. In case you face parsing issues, one possible fix is: prism ats<file-name>.prism <property-file>.pctl -javastack <memory>
+This might only solve the problem to a certain aspect. For big models, we suggest you build through the process mentioned in (1).
+This is for small models.
+
+3. LTS-to-PRISM-CODE-REWARDS-generator.py : Similar to (2). Generates PRISM files with rewards defined. Use the formulas from the subdirectory
+'Reward_models' isnide PRISM for property files to be verified on them. This is an initial version. Output genereated as <atsrew-filename.prism>.
+
+All the problems discussed in the paper are generated using the above codes and are saved in the folder
+                      'Generated_PRISM_Models_with_Embedded_properties',
+under which, for each problem as a separate subdirectory, all the four PRISM files
+(3 MRFs and 1 code alongwith the properties files are shared). The subdirectory 'Reward_models' inside the folder 'PRISM' has the reward models
+generated using 3 and the reward properties again orgainzed per problem.
+
+Please write to:
+************************* <susmoy18@iiserb.ac.in>  *********************** in case of clarifications, bug reports or issues faced. 
+P.S. I am new to Github.
+
+################################################################################################################################################
+					
+
