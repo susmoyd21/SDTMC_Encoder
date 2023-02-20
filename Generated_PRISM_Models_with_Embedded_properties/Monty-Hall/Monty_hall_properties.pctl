@@ -1,0 +1,4 @@
+P=?[(("bot"&true)|(!("bot")&true))U((!("bot")&"player_collects_prize_true")& P>=1[X("bot"&true)])]
+
+P=?[(("bot"&true)|(!("bot")&true))U((!("bot")&"player_collects_prize_false")& P>=1[X("bot"&true)])]
+
